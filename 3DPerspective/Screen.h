@@ -17,6 +17,10 @@ class Screen
 		SDL_RenderSetScale(renderer, 2, 2);
 	}
 
-	
+	void pixel(float x, float y)
+	{
+		points.emplace_back(x, y);
+	}
+
 };
 
