@@ -22,5 +22,19 @@ class Screen
 		points.emplace_back(x, y);
 	}
 
+	void show()
+	{
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+		SDL_RenderClear(renderer); // set background to black
+
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+		for (auto& point : points)
+		{
+			SDL_RenderDrawPointF(renderer, point.x, point.y);
+		}
+
+		SDL_RenderPresent(renderer);
+	}
+
 };
 
