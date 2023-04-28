@@ -10,6 +10,8 @@ class Screen
 	SDL_Renderer* renderer;
 	std::vector<SDL_FPoint> points;
 
+public:
+
 	Screen()
 	{
 		SDL_Init(SDL_INIT_VIDEO);
