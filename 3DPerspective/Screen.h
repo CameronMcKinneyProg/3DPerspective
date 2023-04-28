@@ -21,7 +21,8 @@ public:
 
 	void pixel(float x, float y)
 	{
-		points.emplace_back(x, y);
+		SDL_FPoint point = { x, y };
+		points.emplace_back(point);
 	}
 
 	void show()

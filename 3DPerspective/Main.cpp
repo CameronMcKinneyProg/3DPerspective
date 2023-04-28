@@ -1,4 +1,5 @@
 #include "Screen.h"
+#undef main
 
 int main()
 {
