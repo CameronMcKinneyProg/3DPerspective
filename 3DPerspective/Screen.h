@@ -36,5 +36,16 @@ class Screen
 		SDL_RenderPresent(renderer);
 	}
 
+	void input()
+	{
+		while (SDL_PollEvent(&e))
+		{
+			if (e.type == SDL_QUIT)
+			{
+				SDL_Quit();
+				exit(0);
+			}
+		}
+	}
 };
 
