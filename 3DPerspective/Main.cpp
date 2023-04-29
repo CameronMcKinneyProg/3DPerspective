@@ -11,6 +11,11 @@ struct vec3
 	float x, y, z;
 };
 
+struct pointConnection
+{
+	int a, b;
+};
+
 // apply matrix transformations to rotate points in 3D space
 void rotate(vec3& point, float x = 1, float y = 1, float z = 1)
 {
@@ -72,6 +77,14 @@ int main(int argc, char* args[])
 		{100, 200, 200},
 	};
 
+	std::vector<pointConnection> connections
+	{
+		{0, 4},
+		{1, 5},
+		{2, 6},
+		{3, 7},
+	};
+
 	vec3 c{ 0, 0, 0 };
 	// calculate centroid of the cube given by vertices
 	for (auto& p : points)
@@ -102,6 +115,15 @@ int main(int argc, char* args[])
 
 			// create pixel for point
 			screen.pixel(p.x, p.y);
+		}
+
+		for (auto& conn : connections)
+		{
+			line(screen,
+				points[conn.a].x,
+				points[conn.a].y,
+				points[conn.b].x,
+				points[conn.b].y);
 		}
 
 		screen.show();
