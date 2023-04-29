@@ -6,6 +6,13 @@ Using C++14 Standard */
 
 #undef main // fixes 'unresolved external symbol' error
 
+struct vec3
+{
+	float x, y, z;
+};
+
+
+
 void line(Screen& screen, float x1, float y1, float x2, float y2)
 {
 	float dx = x2 - x1;
