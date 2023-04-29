@@ -29,7 +29,10 @@ int main(int argc, char* args[])
 		screen.pixel(rand() % 640, rand() % 480);
 	}
 
-	line(screen, 0, 0, 300, 300);
+	line(screen, 100, 100, 200, 100);
+	line(screen, 200, 100, 200, 200);
+	line(screen, 200, 200, 100, 200);
+	line(screen, 100, 200, 100, 100);
 
 	while (true)
 	{
