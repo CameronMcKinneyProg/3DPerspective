@@ -3,15 +3,8 @@
 #include <SDL.h>
 #include <vector>
 
-class Screen
-{
-	SDL_Event e;
-	SDL_Window* window;
-	SDL_Renderer* renderer;
-	std::vector<SDL_FPoint> points;
-
+class Screen {
 public:
-
 	Screen()
 	{
 		SDL_Init(SDL_INIT_VIDEO);
@@ -55,5 +48,12 @@ public:
 			}
 		}
 	}
+
+private:
+	SDL_Event e;
+	SDL_Window* window;
+	SDL_Renderer* renderer;
+	std::vector<SDL_FPoint> points;
+
 };
 

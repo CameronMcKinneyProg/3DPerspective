@@ -4,20 +4,18 @@ Using C++14 Standard */
 #include "Screen.h"
 #include <numeric>
 
-#undef main // fixes 'unresolved external symbol' error
+#undef main // fixes SDL2 linking error 'unresolved external symbol'
 
-struct vec3
-{
+struct Vec3 {
 	float x, y, z;
 };
 
-struct pointConnection
-{
+struct PointConnection {
 	int a, b;
 };
 
-// apply matrix transformations to rotate points in 3D space
-void rotate(vec3& point, float x = 1, float y = 1, float z = 1)
+void rotate(Vec3& point, float x = 1, float y = 1, float z = 1)
+	// apply matrix transformations to rotate point in 3D space
 {
 	float rad = 0;
 
@@ -39,7 +37,8 @@ void line(Screen& screen, float x1, float y1, float x2, float y2)
 	float dx = x2 - x1;
 	float dy = y2 - y1;
 
-	float length = sqrtf(dx * dx + dy * dy); // apply Pythagorean theory
+	// apply Pythagorean theory
+	float length = sqrtf(dx * dx + dy * dy);
 	float angle = atan2f(dy, dx);
 
 	for (float i = 0; i < length; i++)
@@ -64,8 +63,7 @@ int main(int argc, char* args[])
 	line(screen, 200, 200, 100, 200);
 	line(screen, 100, 200, 100, 100);*/
 
-	std::vector<vec3> points
-	{
+	std::vector<Vec3> points {
 		{100, 100, 100},
 		{200, 100, 100},
 		{200, 200, 100},
@@ -77,8 +75,7 @@ int main(int argc, char* args[])
 		{100, 200, 200},
 	};
 
-	std::vector<pointConnection> connections
-	{
+	std::vector<PointConnection> connections {
 		// connect front face to rear face
 		{0, 4},
 		{1, 5},
@@ -98,7 +95,7 @@ int main(int argc, char* args[])
 		{7, 4},
 	};
 
-	vec3 c{ 0, 0, 0 };
+	Vec3 c{ 0, 0, 0 };
 	// calculate centroid of the cube given by vertices
 	for (auto& p : points)
 	{
