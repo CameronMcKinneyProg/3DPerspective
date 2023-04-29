@@ -11,6 +11,7 @@ struct vec3
 	float x, y, z;
 };
 
+// apply matrix transformations to rotate points in 3D space
 void rotate(vec3& point, float x = 1, float y = 1, float z = 1)
 {
 	float rad = 0;
@@ -71,17 +72,38 @@ int main(int argc, char* args[])
 		{100, 200, 200},
 	};
 
+	vec3 c{ 0, 0, 0 };
+	// calculate centroid of the cube given by vertices
+	for (auto& p : points)
+	{
+		c.x += p.x;
+		c.y += p.y;
+		c.z += p.z;
+	}
+	c.x /= points.size();
+	c.y /= points.size();
+	c.z /= points.size();
+
 	while (true)
 	{
 		for (auto& p : points)
 		{
-			rotate(p, 0.002, 0.001, 0.004);
-		}
+			// subtract centroid from point
+			p.x -= c.x;
+			p.y -= c.y;
+			p.z -= c.z;
 
-		for (auto& p : points)
-		{
+			rotate(p, 0.002, 0.001, 0.004);
+
+			// add centroid to apply offset
+			p.x += c.x;
+			p.y += c.y;
+			p.z += c.z;
+
+			// create pixel for point
 			screen.pixel(p.x, p.y);
 		}
+
 		screen.show();
 		screen.clear();
 
