@@ -73,10 +73,20 @@ int main(int argc, char* args[])
 
 	while (true)
 	{
+		for (auto& p : points)
+		{
+			rotate(p, 0.002, 0.001, 0.004);
+		}
 
-
+		for (auto& p : points)
+		{
+			screen.pixel(p.x, p.y);
+		}
 		screen.show();
+		screen.clear();
+
 		screen.input();
+		SDL_Delay(30);
 	}
 
 	return 0;
