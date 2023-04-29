@@ -79,10 +79,23 @@ int main(int argc, char* args[])
 
 	std::vector<pointConnection> connections
 	{
+		// connect front face to rear face
 		{0, 4},
 		{1, 5},
 		{2, 6},
 		{3, 7},
+
+		// connect front face vertices together
+		{0, 1},
+		{1, 2},
+		{2, 3},
+		{3, 0},
+
+		// connect rear face vertices together
+		{4, 5},
+		{5, 6},
+		{6, 7},
+		{7, 4},
 	};
 
 	vec3 c{ 0, 0, 0 };
@@ -99,6 +112,7 @@ int main(int argc, char* args[])
 
 	while (true)
 	{
+		// transform and draw vertices
 		for (auto& p : points)
 		{
 			// subtract centroid from point
@@ -106,7 +120,7 @@ int main(int argc, char* args[])
 			p.y -= c.y;
 			p.z -= c.z;
 
-			rotate(p, 0.002, 0.001, 0.004);
+			rotate(p, 0.004, 0.002, 0.008);
 
 			// add centroid to apply offset
 			p.x += c.x;
@@ -117,6 +131,7 @@ int main(int argc, char* args[])
 			screen.pixel(p.x, p.y);
 		}
 
+		// draw edges connecting vertices
 		for (auto& conn : connections)
 		{
 			line(screen,
