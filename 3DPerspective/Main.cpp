@@ -58,10 +58,23 @@ int main(int argc, char* args[])
 	line(screen, 200, 200, 100, 200);
 	line(screen, 100, 200, 100, 100);*/
 
+	std::vector<vec3> points
+	{
+		{100, 100, 100},
+		{200, 100, 100},
+		{200, 200, 100},
+		{100, 200, 100},
 
+		{100, 100, 200},
+		{200, 100, 200},
+		{200, 200, 200},
+		{100, 200, 200},
+	};
 
 	while (true)
 	{
+
+
 		screen.show();
 		screen.input();
 	}
